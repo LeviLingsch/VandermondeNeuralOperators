@@ -118,7 +118,6 @@ def main():
                 loss = myloss(output.reshape(-1), im.reshape(-1))
                 test_loss += loss.item()
 
-
                 l1_relative_error += percentage_difference(output, im)
 
                 median_error[iter] = percentage_difference(output, im).item()
