@@ -33,7 +33,7 @@ To run the VNO for this experiment, several modifications to the file ``nvno_nac
 The file may be run from the terminal with the command ``python3 nvno_naca_airfoil.py``.
 
 ## Datasets
-Methods to download the data for the *Burgers*', *Shear Layer*, and *Surface-Level Specific Humidity* experiments are provided in the **download_data** directory. 
+Methods to download the data for the *Burgers*', *Shear Layer*, and *Surface-Level Specific Humidity* experiments are provided in the **download_data** directory. It is necessary to have ``wget`` installed. 
 
 To download the data for the *Burgers*' experiment, execute the command ``python3 burgers_download.py``. This will download a compressed directory. This directory can be extracted from the ``tar.gz`` file by executing ``tar -xf burgers.tar.gz``. The directory will contain three files, with the name format ``<distribution>_burgers_data_R10.mat``. The three distributions are ``uniform`` (the original, equispaced, uniform distribution), ``conexp`` (the contracting-expanding distribution), and ``rand`` (the random distribution). 
 
@@ -43,4 +43,5 @@ To download the data for the *Surface-Level Specific Humidity* experiment, execu
 
 The data for the *Flow Past Airfoil* experiment are provided by [Li et al., *Fourier Neural Operator with Learned Deformations for PDEs on General Topologies*](https://arxiv.org/abs/2207.05209) and are available in this [Google Drive](https://drive.google.com/drive/folders/1YBuaoTdOSr_qzaow-G-iwvbUI7fiUzu8).
 
-
+## Models
+All models can be downloaded by executing the file in the directory **download_models**. Execute the command ``python3 models_download.py``. This will download a compressed directory. This directory can be extracted from the ``tar.gz`` file by executing ``tar -xf VNO_models.tar.gz``.
