@@ -50,10 +50,12 @@ def main():
         'scheduler_gamma':      0.97,
         'display_predictions':  False,
         'save_model':           True,
+        'load_model':           False,
         'min_max_norm':         False,
         'small_domain':         True,
     }
     file_path = print('Error: Modify this variable to be the path to the data!')
+    model_path = print('Error: Modify this variable to be the path to the data!')
     print(configs)
 
     ##############
@@ -66,8 +68,11 @@ def main():
     #######
     # model
     #######
-    model_name = f"models/{configs['batch_size']}_{configs['modes']}_{configs['width']}_{configs['learning_rate']}"
-    model = VNO2D(configs['modes'], configs['modes'], configs['width']).to(device)
+    if configs['load_model']:
+        model = torch.load(model_path).to(device)
+    else:
+        model_name = f"models/{configs['batch_size']}_{configs['modes']}_{configs['width']}_{configs['learning_rate']}"
+        model = VNO2D(configs['modes'], configs['modes'], configs['width']).to(device)
     
 
     print(count_params(model))
@@ -124,7 +129,7 @@ def main():
 
     if configs['save_model']:
         print(f"model: VNO2D_{configs['epochs']}_{l1_relative_error/configs['num_test']:.4f}")
-        torch.save(model, f"models/VNO2D_{configs['epochs']}_{l1_relative_error/configs['num_test']:.4f}")
+        torch.save(model, f"/VNO2D_{configs['epochs']}_{l1_relative_error/configs['num_test']:.4f}")
     
     with torch.no_grad():
         test_loss = 0

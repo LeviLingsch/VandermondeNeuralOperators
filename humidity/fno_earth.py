@@ -93,6 +93,7 @@ def main(configs):
     save_model = configs['save_model'] 
     select_sparse = configs['select_sparse']  
 
+    path_model = print('Error: replace this variable with the path to the models.')
     file_path = print('Error: replace this variable with the path to the data.')
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -137,7 +138,6 @@ def main(configs):
         model = torch.load(path_model).to(device)
     else:
         model = FNO2D(modes, modes, width).to(device)
-        path_model = print('Error: replace this variable with the path to the models.')
 
     print(count_params(model))
     optimizer = Adam(model.parameters(), lr=learning_rate, weight_decay=1e-4)

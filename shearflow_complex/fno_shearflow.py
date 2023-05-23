@@ -44,7 +44,7 @@ configs = {
     'modes':            20,
     'width':            32,
     'batch_size':       2,
-    'epochs':           101,
+    'epochs':           500,
     'learning_rate':    0.005,
     'scheduler_step':   10,
     'scheduler_gamma':  0.97,
@@ -93,10 +93,8 @@ def main(configs):
 
     select_sparse = configs['select_sparse']
 
-    if socket.gethostname() == 'SRL-DSK-004':
-        file_path = '../'
-    else:
-        file_path='/cluster/scratch/llingsch/ShearFlow/ddsl/'
+    model_path =print('Error: replace this variable with the path to the model.')
+    file_path=print('Error: replace this variable with the path to the data.')
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
@@ -130,7 +128,6 @@ def main(configs):
         model = torch.load(path_model).to(device)
     else:
         model = FNO2D(modes, modes, width).to(device)
-        path_model = f'/cluster/scratch/llingsch/ShearFlow/models/'
 
     print(count_params(model))
     optimizer = Adam(model.parameters(), lr=learning_rate, weight_decay=1e-4)

@@ -11,7 +11,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
-import matplotlib.pyplot as plt
 
 import operator
 from functools import reduce
@@ -146,7 +145,7 @@ ntrain = 1000
 ntest = 200
 
 batch_size = 50 
-learning_rate = 0.001
+learning_rate = 0.005
 
 epochs = 500 
 step_size = 10 

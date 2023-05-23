@@ -61,7 +61,6 @@ def percentage_difference(truth, test):
     difference = torch.mean(torch.abs(truth - test)/truth)
     return difference.item()
 
-
 ################################################################
 # main pipeline
 ################################################################
@@ -91,7 +90,7 @@ def main(configs):
     load_model = configs['load_model']  
     save_model = configs['save_model']  
 
-    path_model =  print('Error: replace this variable with the path to the model.')
+    model_path =  print('Error: replace this variable with the path to the model.')
     file_path =  print('Error: replace this variable with the path to the data.')
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -142,7 +141,7 @@ def main(configs):
     ##############
     # initialize model
     if load_model:
-        model = torch.load(path_model).to(device)
+        model = torch.load(model_path).to(device)
     else:
         model = VNO2DFixed(modes, modes, width, transformer, x_pos, y_pos).to(device)
 
