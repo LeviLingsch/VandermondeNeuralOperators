@@ -166,9 +166,9 @@ data_dist = 'uniform'
 PATH = print('Error: Modify this variable to be the path to the data!')
 if data_dist == 'uniform':
     dataloader = MatReader(PATH+data_dist+'_burgers_data_R10.mat')
-    x_data = dataloader.read_field('a')[:,:][:,::128]
-    y_data = dataloader.read_field('u')[:,:][:,::128]
-    p_data = torch.arange(8192)[::128]
+    x_data = dataloader.read_field('a')[:,:]
+    y_data = dataloader.read_field('u')[:,:]
+    p_data = torch.arange(8192)
 else:
     dataloader = MatReader(PATH+data_dist+'_burgers_data_R10.mat')
     x_data = dataloader.read_field('a')[:,:]
@@ -204,7 +204,6 @@ print(count_params(model))
 optimizer = Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=step_size, gamma=gamma)
 train_loss = np.zeros(epochs)
-# myloss = torch.nn.L1Loss()
 myloss = LpLoss()
 
 
@@ -261,7 +260,7 @@ with torch.no_grad():
         out = model(x).view(-1)
         pred[index] = out
 
-        test_l1 = myloss(out.view(1, -1), y.view(1, -1)).item()
+        test_loss = myloss(out.view(1, -1), y.view(1, -1)).item()
 
-        print(index, test_l1)
+        print(index, test_loss)
         index = index + 1
