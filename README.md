@@ -1,5 +1,5 @@
-# VNO_submission
-The code for the Vandermonde Neural Operators (VNO) submission to NeurIPS 2023. This code presents the implementations of VNOs for several numerical experiments; Burgers' Equation, shear layer, surface-level specific humidity, and flow past an airfoil. 
+# Vandermonde Neural Operators
+The code for the Vandermonde Neural Operators (VNO) paper available [here](https://arxiv.org/abs/2305.19663). This code presents the implementations of VNOs for several numerical experiments; Burgers' Equation, shear layer, surface-level specific humidity, and flow past an airfoil. 
 
 PyTorch version 1.12.1+cu113 was used in these experiments. Information on installing this version is availabe at [PyTorch](https://pytorch.org/get-started/previous-versions/). Experiments were run on a NVidia GeForce RTX_3090 with 24 GB of memory. Running on other platforms may require adjustment of the batch size.  
 
