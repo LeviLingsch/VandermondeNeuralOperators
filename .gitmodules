@@ -1,0 +1,3 @@
+[submodule "DSE-for-NeuralOperators"]
+	path = DSE-for-NeuralOperators
+	url = https://github.com/camlab-ethz/DSE-for-NeuralOperators
